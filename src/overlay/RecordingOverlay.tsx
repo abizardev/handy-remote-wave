@@ -300,7 +300,9 @@ const RecordingOverlay: React.FC = () => {
         dir={direction}
         className={`ov-stage ${position} ov-fade ${isVisible ? "show" : ""}`}
       >
-        <div className={`scard compact wave-mode ${isVisible ? "" : "leaving"}`}>
+        <div
+          className={`scard compact wave-mode ${isVisible ? "" : "leaving"}`}
+        >
           <div className="swavewrap">
             <SiriWave levels={levels} ready={captureReady} />
             {cancelBtn}
@@ -317,7 +319,9 @@ const RecordingOverlay: React.FC = () => {
         className={`ov-stage ${position} ov-fade ${isVisible ? "show" : ""}`}
       >
         <div className="scard compact cworking">
-          <div className="swavewrap swavewrap-work">{workingRow(workLabel, true)}</div>
+          <div className="swavewrap swavewrap-work">
+            {workingRow(workLabel, true)}
+          </div>
         </div>
       </div>
     );

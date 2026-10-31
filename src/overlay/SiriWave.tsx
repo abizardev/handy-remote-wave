@@ -18,7 +18,8 @@ const DARK_PALETTE: [string, string] = ["#69d2e7", "#b97af1"];
 const mixHex = (a: string, b: string, t: number): string => {
   const pa = parseInt(a.slice(1), 16);
   const pb = parseInt(b.slice(1), 16);
-  const ch = (x: number, s: number) => Math.round(((x >> s) & 255) * (1 - t) + ((pb >> s) & 255) * t);
+  const ch = (x: number, s: number) =>
+    Math.round(((x >> s) & 255) * (1 - t) + ((pb >> s) & 255) * t);
   const r = ch(pa, 16);
   const g = ((pa >> 8) & 255) * (1 - t) + ((pb >> 8) & 255) * t;
   const bl = (pa & 255) * (1 - t) + (pb & 255) * t;
@@ -36,7 +37,8 @@ const desat = (c: string, t: number): string => {
 };
 
 const rgbaFrom = (c: string, a: number): string => {
-  if (c.startsWith("rgb(")) return c.replace("rgb(", "rgba(").replace(")", `,${a})`);
+  if (c.startsWith("rgb("))
+    return c.replace("rgb(", "rgba(").replace(")", `,${a})`);
   const p = parseInt(c.slice(1), 16);
   return `rgba(${(p >> 16) & 255},${(p >> 8) & 255},${p & 255},${a})`;
 };
@@ -110,8 +112,7 @@ const SiriWave: React.FC<SiriWaveProps> = ({ levels, ready, className }) => {
       // Live mic level: loudest bucket of the 16 FFT bands sent by the backend.
       const burst = levelsRef.current || [];
       let m = 0;
-      for (let i = 0; i < burst.length; i += 1)
-        if (burst[i] > m) m = burst[i];
+      for (let i = 0; i < burst.length; i += 1) if (burst[i] > m) m = burst[i];
       const target = readyRef.current ? Math.pow(m, 0.7) : 0.04;
       levelS += (target - levelS) * (1 - Math.exp(-14 * dt));
 
@@ -124,7 +125,7 @@ const SiriWave: React.FC<SiriWaveProps> = ({ levels, ready, className }) => {
         amps[k] += (tTarget - amps[k]) * (1 - Math.exp(-12 * dt));
         const wob =
           1 -
-          0.3 * (0.5 + 0.5 * Math.sin(now / 1000 * WOBBLE_RATE[k] + k * 1.4));
+          0.3 * (0.5 + 0.5 * Math.sin((now / 1000) * WOBBLE_RATE[k] + k * 1.4));
         const amp = amps[k] * wob * ampMax;
         const fk = (freqS + 1.8 * levelS) * FREQ_MUL[k];
         phases[k] += dt * (1.6 + levelS * 2.2) * FLOW_MUL[k];
@@ -168,7 +169,11 @@ const SiriWave: React.FC<SiriWaveProps> = ({ levels, ready, className }) => {
   }, []);
 
   return (
-    <canvas ref={canvasRef} className={className} style={{ width: 176, height: 36 }} />
+    <canvas
+      ref={canvasRef}
+      className={className}
+      style={{ width: 176, height: 36 }}
+    />
   );
 };
 
