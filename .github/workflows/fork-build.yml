@@ -1,0 +1,45 @@
+name: "Fork Build"
+
+# Unsigned installers for this fork: Linux .deb, Windows .exe and .msi, and
+# macOS .dmg (Apple Silicon and Intel, ad-hoc signed, not notarized).
+# Download them from the run's artifacts.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "src-tauri/**"
+      - "package.json"
+      - "bun.lock"
+      - ".github/workflows/build.yml"
+      - ".github/workflows/fork-build.yml"
+
+jobs:
+  build:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: "macos-26"
+            args: "--target aarch64-apple-darwin"
+            target: "aarch64-apple-darwin"
+          - platform: "macos-latest"
+            args: "--target x86_64-apple-darwin"
+            target: "x86_64-apple-darwin"
+          - platform: "ubuntu-22.04"
+            args: "--bundles deb"
+            target: "x86_64-unknown-linux-gnu"
+          - platform: "windows-latest"
+            args: ""
+            target: "x86_64-pc-windows-msvc"
+    uses: ./.github/workflows/build.yml
+    with:
+      platform: ${{ matrix.platform }}
+      target: ${{ matrix.target }}
+      build-args: ${{ matrix.args }}
+      sign-binaries: false
+      asset-prefix: "handy-fork"
+      upload-artifacts: true
