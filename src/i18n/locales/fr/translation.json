@@ -306,7 +306,8 @@
           "options": {
             "none": "Aucune",
             "minimal": "Minimal",
-            "live": "Live"
+            "live": "Live",
+            "wave": "Onde"
           }
         },
         "position": {

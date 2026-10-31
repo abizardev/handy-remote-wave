@@ -306,7 +306,8 @@
           "options": {
             "none": "Yok",
             "minimal": "Sade",
-            "live": "Canlı"
+            "live": "Canlı",
+            "wave": "Dalga"
           }
         },
         "position": {

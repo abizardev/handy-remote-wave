@@ -306,7 +306,8 @@
           "options": {
             "none": "Nessuno",
             "minimal": "Minimo",
-            "live": "In tempo reale"
+            "live": "In tempo reale",
+            "wave": "Onda"
           }
         },
         "position": {

@@ -306,7 +306,8 @@
           "options": {
             "none": "无",
             "minimal": "精简",
-            "live": "实时"
+            "live": "实时",
+            "wave": "波浪"
           }
         },
         "position": {

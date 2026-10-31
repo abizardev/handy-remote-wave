@@ -306,7 +306,8 @@
           "options": {
             "none": "Nenhum",
             "minimal": "Minimalista",
-            "live": "Ao vivo"
+            "live": "Ao vivo",
+            "wave": "Onda"
           }
         },
         "position": {

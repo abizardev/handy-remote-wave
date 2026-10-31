@@ -306,7 +306,8 @@
           "options": {
             "none": "कोई नहीं",
             "minimal": "मिनिमल",
-            "live": "लाइव"
+            "live": "लाइव",
+            "wave": "तरंग"
           }
         },
         "position": {

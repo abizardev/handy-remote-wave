@@ -306,7 +306,8 @@
           "options": {
             "none": "Žádné",
             "minimal": "Minimální",
-            "live": "Živě"
+            "live": "Živě",
+            "wave": "Vlna"
           }
         },
         "position": {

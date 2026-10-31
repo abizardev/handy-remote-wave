@@ -306,7 +306,8 @@
           "options": {
             "none": "ללא",
             "minimal": "מינימלי",
-            "live": "בזמן אמת"
+            "live": "בזמן אמת",
+            "wave": "גל"
           }
         },
         "position": {

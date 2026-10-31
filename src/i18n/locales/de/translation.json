@@ -306,7 +306,8 @@
           "options": {
             "none": "Keine",
             "minimal": "Minimal",
-            "live": "Live"
+            "live": "Live",
+            "wave": "Welle"
           }
         },
         "position": {

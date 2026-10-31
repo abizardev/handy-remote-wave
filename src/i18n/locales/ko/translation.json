@@ -306,7 +306,8 @@
           "options": {
             "none": "없음",
             "minimal": "간단",
-            "live": "실시간"
+            "live": "실시간",
+            "wave": "파도"
           }
         },
         "position": {

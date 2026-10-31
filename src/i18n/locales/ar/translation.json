@@ -283,7 +283,8 @@
           "options": {
             "none": "بلا",
             "minimal": "مبسط",
-            "live": "مباشر"
+            "live": "مباشر",
+            "wave": "موجة"
           }
         },
         "position": {

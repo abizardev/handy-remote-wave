@@ -306,7 +306,8 @@
           "options": {
             "none": "なし",
             "minimal": "ミニマル",
-            "live": "ライブ"
+            "live": "ライブ",
+            "wave": "波"
           }
         },
         "position": {

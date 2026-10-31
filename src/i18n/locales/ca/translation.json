@@ -306,7 +306,8 @@
           "options": {
             "none": "Cap",
             "minimal": "Mínima",
-            "live": "En directe"
+            "live": "En directe",
+            "wave": "Ona"
           }
         },
         "position": {

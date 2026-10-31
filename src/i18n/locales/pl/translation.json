@@ -306,7 +306,8 @@
           "options": {
             "none": "Brak",
             "minimal": "Minimalna",
-            "live": "Na żywo"
+            "live": "Na żywo",
+            "wave": "Fala"
           }
         },
         "position": {
