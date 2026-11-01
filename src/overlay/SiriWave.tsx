@@ -26,21 +26,31 @@ const mixHex = (a: string, b: string, t: number): string => {
   return `rgb(${r},${Math.round(g)},${Math.round(bl)})`;
 };
 
+// Parse "#rrggbb" and "rgb(r,g,b)" into an [r, g, b] triple. Both formats
+// occur in the palette: the base colors are hex, while `mixHex` outputs rgb
+// strings.
+const parseColor = (c: string): [number, number, number] => {
+  if (c.startsWith("rgb(")) {
+    const parts = c.slice(4, -1).split(",");
+    const r = parseInt(parts[0].trim(), 10);
+    const g = parseInt(parts[1].trim(), 10);
+    const b = parseInt(parts[2].trim(), 10);
+    return [r, g, b];
+  }
+  const p = parseInt(c.replace("#", ""), 16);
+  return [(p >> 16) & 255, (p >> 8) & 255, p & 255];
+};
+
 const desat = (c: string, t: number): string => {
   if (t <= 0) return c;
-  const p = parseInt(c.startsWith("#") ? c.slice(1) : c.replace("#"), 16);
-  const r = (p >> 16) & 255;
-  const g = (p >> 8) & 255;
-  const b = p & 255;
+  const [r, g, b] = parseColor(c);
   const y = r * 0.2126 + g * 0.7152 + b * 0.0722;
   return `rgb(${Math.round(r + (y - r) * t)},${Math.round(g + (y - g) * t)},${Math.round(b + (y - b) * t)})`;
 };
 
 const rgbaFrom = (c: string, a: number): string => {
-  if (c.startsWith("rgb("))
-    return c.replace("rgb(", "rgba(").replace(")", `,${a})`);
-  const p = parseInt(c.slice(1), 16);
-  return `rgba(${(p >> 16) & 255},${(p >> 8) & 255},${p & 255},${a})`;
+  const [r, g, b] = parseColor(c);
+  return `rgba(${r},${g},${b},${a})`;
 };
 
 interface SiriWaveProps {
